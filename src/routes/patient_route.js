@@ -1,15 +1,15 @@
 import express from 'express'
 import {
-	getPatient,
+	getPatients,
 	getPatientById,
 	createPatient,
 	updatePatient,
 	deletePatient,
-} from './src/controller/patient_controller'
+} from '../controller/patient_controller.js'
 
 const router = express.Router()
 
-router.route('/').get(getPatient).post(createPatient)
+router.route('/').get(getPatients).post(createPatient)
 
 router
 	.route('/:id')

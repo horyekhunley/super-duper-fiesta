@@ -15,7 +15,7 @@ const HttpStatus = {
 	INTERNAL_SERVER_ERROR: { code: 500, status: 'INTERNAL_SERVER_ERROR' },
 }
 
-exports.getPatients = async (req, res) => {
+export const getPatients = async (req, res) => {
 	logger.info(`${req.method} ${req.originalUrl}, Getting all patients`)
 	database.query(QUERY.SELECT_PATIENTS, (err, results) => {
 		if (!results) {
@@ -38,7 +38,7 @@ exports.getPatients = async (req, res) => {
 		}
 	})
 }
-exports.createPatient = async (req, res) => {
+export const createPatient = async (req, res) => {
 	logger.info(`${req.method} ${req.originalUrl}, Creating a new patient`)
 	database.query(
 		QUERY.CREATE_PATIENT,
@@ -71,7 +71,7 @@ exports.createPatient = async (req, res) => {
 		}
 	)
 }
-exports.getPatientById = async (req, res) => {
+export const getPatientById = async (req, res) => {
 	logger.info(
 		`${req.method} ${req.originalUrl}, Fetching patient ${req.params.id} data`
 	)
@@ -96,7 +96,7 @@ exports.getPatientById = async (req, res) => {
 		}
 	})
 }
-exports.updatePatient = (req, res) => {
+export const updatePatient = (req, res) => {
 	logger.info(`${req.method} ${req.originalUrl}, fetching patient`)
 	database.query(QUERY.SELECT_PATIENT, [req.params.id], (error, results) => {
 		if (!results[0]) {
@@ -138,7 +138,7 @@ exports.updatePatient = (req, res) => {
 	})
 }
 
-exports.deletePatient = (req, res) => {
+export const deletePatient = (req, res) => {
 	logger.info(`${req.method} ${req.originalUrl}, deleting patient`)
 	database.query(QUERY.DELETE_PATIENT, [req.params.id], (error, results) => {
 		if (results.affectedRows > 0) {
