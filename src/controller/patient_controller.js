@@ -43,7 +43,7 @@ export const createPatient = async (req, res) => {
 	database.query(
 		QUERY.CREATE_PATIENT,
 		Object.values(req.body),
-		(err, results) => {
+		(error, results) => {
 			if (!results) {
 				logger.error(error.message)
 				res.send(
